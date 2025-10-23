@@ -1,8 +1,9 @@
 
 Project Live Link
+
 https://ehtishamulhaqueofficial-a11y.github.io/Tasbeeh-Counter/
 
-🕋 Tasbeeh Counter – Version 3
+🕋 **Tasbeeh Counter – Version 3**
 
 A simple yet powerful web-based Tasbeeh Counter built using HTML, CSS, and JavaScript.
 This app helps users easily create, manage, and track multiple tasbeehs (zikr) with live counting and data persistence.
