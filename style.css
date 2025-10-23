@@ -1,0 +1,198 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    min-height: 100vh;
+    background-color: rgb(57, 2, 74);
+}
+
+h1 {
+    text-align: center;
+    margin-top: 0px;
+    margin-bottom: 30px;
+    font-size: 4.3rem;
+    color: purple;
+    font-weight: 800;
+    border-radius: 8px;
+    padding: 10px 12px 10px 12px;
+    background-color: white;
+    box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* keep your existing .container rules, but remove its background-color
+   and let the pseudo-elements draw the background + border */
+.container {
+  position: relative;  /* ✅ Needed for gradient border */
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 65vh;
+  width: 48vw;
+  gap: 20px;
+  padding: 20px;
+  border-radius: 1rem;
+  box-shadow: 0 0 25px 15px rgb(251, 218, 28);
+  /* remove background-color from here (we'll apply it in ::after) */
+  background: transparent;
+}
+
+/* animated gradient border */
+.container::before{
+  content: "";
+  position: absolute;
+  inset: -6px;                   /* makes the gradient larger than the box */
+  border-radius: calc(1rem + 6px);
+  background: conic-gradient(
+    from 0deg,
+    #c800ff,
+    #ff8400,
+    #ffd000,
+    #4dff00,
+    #00b7ff,
+    #3700ff,
+    #ff00b7,
+    #fe0000
+  );
+  z-index: 0;
+  transform-origin: center;
+  animation: rotateGradient 10s linear infinite;
+  will-change: transform;
+}
+
+/* inner fill — covers center so only the gradient ring shows */
+.container::after{
+  content: "";
+  position: absolute;
+  inset: 10px;                    /* same as the negative inset above */
+  border-radius: 1rem;
+  background: rgb(255, 238, 145); /* match your original container color */
+  z-index: 1;
+}
+
+/* make page content sit above the pseudo-elements */
+.container > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* animation */
+@keyframes rotateGradient {
+  to { transform: rotate(360deg); }
+}
+
+.container input {
+    height: 3rem;
+    width: 25rem;
+    padding: 5px 5px 5px 35px;
+    border-radius: 5px;
+    font-size: 2rem;
+    outline: none;
+    border: none;
+    font-weight: 400;
+    margin-top: 2rem;
+}
+
+.container input::placeholder {
+    text-align: center;
+}
+.container input:hover{
+    outline: 3px solid white;
+    outline-offset: 4px;
+}
+.search {
+    display: flex;
+    gap: 10px;
+}
+
+.add {
+    height: 3.7rem;
+    width: 8rem;
+    padding: 8px;
+    border-radius: 5px;
+    font-size: 1.7rem;
+    outline: none;
+    border: none;
+    font-weight: 550;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    margin-top: 2rem;
+}
+
+.add:hover {
+    background-color: white;
+    color: black;
+    transition: all 0.5s;
+}
+
+.add:active {
+    background-color: #ddd;
+    transform: scale(0.95);
+    box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.btn{
+    font-size: 2rem;
+    outline: none;
+    border: none;
+    padding: 10px 15px 10px 15px;
+    border-radius: 5px;
+    color: white;
+    background-color: black;
+    cursor: pointer;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.btn:hover{
+    background-color: rgb(82, 82, 82);
+    transition: 0.6s;
+}
+.btn:active{
+    transform: scale(0.95);
+}
+.resetbtn:active{
+    transform: scale(0.75);
+}
+.subbtn {
+    display: flex;
+    gap: 12px;
+    align-items: center; /* center them */
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.tasbeeh-heading {
+  font-size: 3rem;
+  text-align: center;
+  word-wrap: break-word;
+  width: 30rem;
+}
+
+.data-list {
+    width: 100%;
+    height: 200px;           /* fixed space for tasbeeh names */
+    overflow-y: auto;        /* scroll if too many items */
+    margin-top: 10px;
+    text-align: center;
+}
+
+.delete-btn {
+  background: white;
+  color: black;
+}
+
+.delete-btn:hover {
+  background: black;
+  color: white;
+}
